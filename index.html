@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <title>JS Bin</title>
+    <style>
+        body{
+            padding:0;
+            margin:0;
+
+        }
+
+        *{
+            box-sizing:border-box;
+            //border:1px solid red;
+
+        }
+
+
+
+        .homepage{
+            color:white;
+            //border:1px solid transparent;
+            height:800px;
+            //margin-top:-100px;
+            position:relative;
+
+        }
+
+        .homepageCt{
+            position:absolute;
+            z-index:2;
+            //border:1px solid red;
+            max-width: 900px;
+            max-height: 500px;
+            left: 50%;
+            top: 20%;
+            transform:translate(-50%,-50%)
+
+
+
+        }
+
+        #ct{
+            position:absolute;
+            z-index:1;
+            width: 100%;
+            //border:1px solid red;
+            padding:0;
+            overflow:hidden;
+            height:800px;
+            margin:0 auto;
+
+        }
+
+
+
+        .homepageCt>p:first-of-type{
+            font-size:40px;
+            text-align:center;
+            //border:1px solid;
+            padding-top:250px;
+            margin-bottom:0;
+        }
+
+        .homepageCt>p:nth-of-type(2){
+            font-size:60px;
+            font-weight:bold;
+            text-align:center;
+           // border:1px solid;
+            margin-top:8px;
+            margin-bottom:0;
+        }
+
+        .navi-bar{
+
+            max-width:1160px;
+            margin:0 auto;
+            //border: 1px solid white;
+            padding:0;
+        }
+
+        .navi-ct{
+            position: sticky;
+            top:0;
+            background-color: #282828;
+            z-index:3;
+        }
+
+        .navi-icon{
+            list-style:none;
+            display:inline-block;
+            //border:1px solid white;
+            float:right;
+        }
+
+        .navi-bar:after{
+            content:"";
+            display:block;
+            clear:both;
+            height:0;
+        }
+
+        .navi-bar>span{
+
+            //border:1px solid white;
+            line-height: 65px;
+            font-size: 32px;
+            color: orange;
+        }
+
+        .navi-bar>span:hover{
+            cursor:pointer;
+        }
+
+        .navi-icon li>a{
+            display:inline-block;
+            padding:5px 10px;
+            color:white;
+            text-decoration:none;
+
+        }
+
+        .navi-icon li{
+            display:inline-block;
+            padding:5px 10px;
+            color:white;
+
+        }
+
+        .navi-icon li>a:hover{
+            color: orange;
+            cursor:pointer;
+        }
+
+        .homepageCt a{
+            text-decoration:none;
+            color:white;
+            display:inline-block;
+            //border:1px solid;
+            font-size: 24px;
+            font-weight:bold;
+            background:#FFC773;
+            position:absolute;
+            left:50%;
+            transform:translate(-50%,0);
+            width:200px;
+            line-height: 50px;
+            text-align:center;
+            //margin-top: 30px;
+            border-radius:4px;
+            margin:0 auto;
+        }
+
+        .homepageCt a:hover{
+            background: #FFB84D;
+        }
+
+        .services{
+            //height:600px;
+            margin-top:50px;
+            margin-bottom:0;
+            //border:1px solid;
+            padding-top:60px;
+            position:relative;
+        }
+
+        .services h1{
+            font-weight:bold;
+            text-align:center;
+
+        }
+
+        .services>p:first-of-type{
+            text-align:center;
+            color:#C0C0C0;
+        }
+
+        .services-ct{
+            max-width:1160px;
+            display:flex;
+            flex-direction:row;
+            margin:50px auto 20px auto ;
+        }
+
+        .services-ct > div{
+            1border:1px solid red;
+            text-align:center;
+            white-space:wrap;
+        }
+
+
+        .services-ct > div p{
+            color:#C0C0C0;
+        }
+
+        .icon{
+            width:100px;
+            height:100px;
+            border-radius:50px;
+            display:inline-block;
+            background: #FFC773;
+            margin:0 auto;
+            font-family: 'iconfont';
+            font-size: 50px;
+            line-height: 90px;
+            color:white;
+
+        }
+
+        @font-face {
+            font-family: 'iconfont';  /* project id 349599 */
+            src: url('//at.alicdn.com/t/font_emdrh8z372g74x6r.eot');
+            src: url('//at.alicdn.com/t/font_emdrh8z372g74x6r.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_emdrh8z372g74x6r.woff') format('woff'),
+            url('//at.alicdn.com/t/font_emdrh8z372g74x6r.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_emdrh8z372g74x6r.svg#iconfont') format('svg');
+        }
+
+        .portfolio{
+            height: 1100px;
+            1border:1px solid;
+            background: #F5F5F5;
+        }
+
+        .portfolio> h1{
+            text-align:center;
+            padding-top:80px;
+
+        }
+
+        .portfolio> p{
+            text-align:center;
+            color:#C0C0C0;
+            margin-bottom:80px;
+        }
+
+        .portfolio-ct{
+            max-width:1160px;
+            height: 760;
+            margin:0 auto;
+            1border: 1px solid;
+            display:flex;
+            flex-direction:row;
+            flex-wrap:wrap;
+            justify-content: space-between;
+        }
+
+
+        .card{
+            position:relative;
+        }
+
+        .card> div{
+            width:360px;
+            height:260px;
+            background-size:contain;
+            background-repeat:no-repeat;
+        }
+
+        .card h3{
+            text-align:center;
+
+        }
+
+        .card p{
+            text-align:center;
+            color:#C0C0C0;
+
+        }
+
+        .card li{
+            list-style:none;
+        }
+
+        .card-pic1{
+            background:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/portfolio/roundicons.png);
+        }
+        .card-pic2{
+            background:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/portfolio/startup-framework.png);
+        }
+        .card-pic3{
+            background:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/portfolio/treehouse.png);
+        }
+        .card-pic4{
+            background:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/portfolio/golden.png);
+        }
+        .card-pic5{
+            background:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/portfolio/escape.png);
+        }
+        .card-pic6{
+            background:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/portfolio/dreams.png);
+        }
+
+        .float-yellow{
+            font-family:'iconfont';
+            width:360px;
+            height:260px;
+            background: #FFB84D;
+            display:inline-block;
+            text-align:center;
+            line-height:260px;
+            font-size:60px;
+            color:white;
+            font-weight:bold;
+            opacity:0.7;
+            position:absolute;
+
+            top:0;
+            display:none;
+        }
+
+        .card div:hover .float-yellow{
+            display:block;
+            cursor:pointer;
+
+        }
+
+
+
+        .about h1{
+            text-align:center;
+            padding-top:80px;
+        }
+
+        .about p{
+            text-align:center;
+            color:#C0C0C0;
+            margin-bottom:80px;
+        }
+
+
+        .circle{
+            width:170px;
+            height:170px;
+            border:5px solid #E8E8E8;
+            border-radius: 85px;
+            margin:0 auto;
+            background-size:contain;
+            position:relative;
+            margin-bottom:130px;
+        }
+
+
+
+        .circle1{
+            background-image:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/about/1.jpg);
+        }
+
+        .circle2{
+            background-image:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/about/2.jpg);
+        }
+
+        .circle3{
+            background-image:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/about/3.jpg);
+        }
+
+        .circle4{
+            background-image:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/about/4.jpg);
+        }
+
+        .circle5{
+            background-image:url();
+        }
+
+
+        .word{
+            width:380px;
+            height:210px;
+            1border:1px solid;
+        }
+
+
+        .word1{
+            position:absolute;
+            left:-400px;
+            bottom:-20px;
+            text-align:right;
+        }
+
+
+        .word1 p{
+            text-align:right;
+        }
+
+        .line{
+            width:135px;
+            height:0;
+            border:1px solid #E8E8E8;
+            position:relative;
+            transform:rotatez(90deg);
+            bottom:-240px;
+            left:8px;
+        }
+
+
+        .word3{
+            position:absolute;
+            left:-400px;
+            bottom:-20px;
+            text-align:right;
+        }
+
+
+        .word3 p{
+            text-align:right;
+        }
+
+
+        .word2{
+            position:absolute;
+            left:190px;
+            bottom:-15px;
+            text-align:left;
+        }
+
+
+        .word2 p{
+            text-align:left;
+        }
+
+        .word4{
+            position:absolute;
+            left:190px;
+            bottom:-15px;
+            text-align:left;
+        }
+
+
+        .word4 p{
+            text-align:left;
+        }
+
+        .circle5{
+            background:#FFC773;
+
+        }
+
+        .word5{
+            display:inline-block;
+            font-weight:bold;
+            color:white;
+            //width:75px;
+            text-align:center;
+            //padding-left: 20px;
+            padding-top: 60px;
+            //line-height: 20px;
+            //border:1px solid red;
+        }
+
+
+
+        .team{
+            background:#F5F5F5;
+            1height:900px;
+
+
+        }
+
+
+        .team>h1{
+            text-align:center;
+            padding-top:150px;
+
+        }
+
+        .team>p{
+            text-align:center;
+            color:#C0C0C0;
+            margin-bottom:120px;
+
+        }
+
+        .team-ct{
+            max-width:1160px;
+            height:380px;
+            display:flex;
+            margin:0 auto;
+            1flex-direction:row;
+            1border:1px solid;
+            justify-content:space-between;
+        }
+
+        .member-card{
+            1border:1px solid;
+
+        }
+
+        .people{
+            width:230px;
+            height:230px;
+            border-radius:115px;
+            border:5px solid #E8E8E8;
+
+        }
+
+
+        .people1{
+            background-image:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/team/5.jpg);
+            background-size:contain;
+        }
+
+
+        .people2{
+            background-image:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/team/6.jpg);
+            background-size:contain;
+        }
+
+        .people3{
+            background-image:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/team/7.jpg);
+            background-size:contain;
+        }
+
+        .member-card>h4,.member-card>p{
+            text-align:center;
+            margin:7px auto;
+        }
+
+
+        .sn-share{
+            font-family: 'iconfont';
+            font-size: 20px;
+            1border:1px solid;
+            text-align:center;
+
+        }
+
+        .sn-share div{
+            width:40px;
+            height:40px;
+            border-radius:20px;
+            display:inline-block;
+            background:black;
+            color:white;
+            text-align:center;
+            line-height: 40px;
+            margin:5px 5px;
+        }
+
+
+        .sn-share div:hover{
+
+            background:#FFC773;
+            cursor:pointer;
+
+        }
+
+        .team p:nth-of-type(2){
+            text-align:center;
+            color:#C0C0C0;
+            max-width:760px;
+            margin: 40px auto 20px auto;
+        }
+
+        .logos{
+            height:150px;
+            background:white;
+            padding:20px 0;
+
+        }
+
+        .logos-ct{
+            max-width:1060px;
+            margin:50px auto;
+            1border:1px solid;
+            text-align:center;
+
+        }
+
+        #logos-ct>img{
+            margin:0 30px;
+        }
+
+        .contact{
+            height:720px;
+            background-image:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/map-image.png);
+            background-color: #181818;
+
+        }
+
+
+        .contact>h1{
+            text-align:center;
+            padding-top:120px;
+            color:white;
+        }
+
+        .contact>p{
+            text-align:center;
+            color:#C0C0C0;
+            margin-bottom:20px;
+
+        }
+
+
+        .contact-ct{
+            1border:1px solid white;
+            max-width:1000px;
+            margin:0 auto;
+
+
+        }
+
+
+
+        .contact-form1 input{
+            width:400px;
+            height:50px;
+            margin: 20px;
+            border-radius:4px;
+            font-size: 18px;
+            display: block;
+        }
+
+
+        .contact-ct2>textarea{
+            width:400px;
+            height:200px;
+            display:inline-block;
+            margin-top:20px;
+            border-radius:4px;
+            font-size: 18px;
+            font-family:helvetical;
+
+
+        }
+
+        .contact-ct2{
+            display:flex;
+            flex-direction: row;
+
+            justify-content: space-around;
+        }
+
+        contact-form1{
+            white-space: nowrap;
+        }
+
+        .submit{
+            color:white;
+            font-size: 22px;
+            width:200px;
+            height:50px;
+            margin: 40px auto 30px auto;
+            background: #FFC773;
+
+            text-align:center;
+            vertical-align:middle;
+            line-height: 50px;
+            border-radius:4px;
+        }
+
+        .submit:hover{
+            cursor:pointer;
+            background: #FFB84D;
+        }
+
+
+
+
+
+        .footer-ct{
+            max-width:1000px;
+            margin:0 auto;
+            height:90px;
+            display:flex;
+            flex-direction:row;
+            justify-content:space-between;
+        }
+
+
+        .footer-ct>.sn-share{
+            width: 200px;
+            height:50px;
+            padding:0;
+            display:inline-block;
+            line-height:80px;
+        }
+
+        .terms{
+            display:inline-block;
+            line-height:80px;
+
+
+        }
+
+        .terms a{
+            text-decoration:none;
+            color: #FFC773;
+        }
+
+        .terms a:hover{
+            text-decoration:underline;
+        }
+
+        .footer-ct>div:first-child{
+            display:inline-block;
+            line-height:80px;
+            color:#585858;
+        }
+
+        #fixedBtn{
+            display:inline-block;
+            position:fixed;
+            right:20px;
+            bottom:20px;
+            width:50px;
+            height:50px;
+            background-color: orange;
+            text-align:center;
+            vertical-align:middle;
+            font-size:16px;
+            padding:0;
+            margin:0;
+            border-radius:25px;
+
+
+        }
+
+        #fixedBtn a{
+            font-size:16px;
+            //width:60px;
+            //height:60px;
+            padding:0;
+            margin:0;
+            line-height:50px;
+            text-decoration:none;
+            color:white;
+        }
+
+        #long-ct>li{
+            list-style:none;
+            float:left;
+
+        }
+
+
+
+        #long-ct{
+            font-size:0;
+        //width:3000px;
+            position:relative;
+            padding: 0;
+            margin:0;
+
+        }
+
+
+        #long-ct img{
+            //width:100%;
+
+            margin-top:-130px;
+        }
+
+
+
+        #preBtn,#nextBtn{
+            font-size:20px;
+            color:white;
+            display:inline-block;
+            position:absolute;
+            top: 50%;
+            transform:translate(0,-50%);
+            border:1px solid;
+            width:40px;
+            height:40px;
+            border-radius:20px;
+            text-align:center;
+            line-height:35px;
+            cursor:pointer;
+        }
+
+        #preBtn:hover,#nextBtn:hover{
+            opacity:0.7;
+        }
+
+
+
+        .clearfix:after{
+            content:"";
+            display:block;
+            clear:both;
+
+        }
+
+        #preBtn{
+
+            left:20px;
+
+        }
+
+        #nextBtn{
+
+            right:20px;
+
+        }
+
+
+        #long-button-ct{
+            display:inline-block;
+            position:absolute;
+            color:white;
+            bottom:30px;
+            left:50%;
+            transform:translate(-50%,0)
+
+        }
+
+        .long-button{
+            display:inline-block;
+            width:40px;
+            height:10px;
+
+            border-radius:3px;
+            border:1px solid;
+            cursor:pointer;
+        }
+
+        .background-color{
+            background-color:white;
+        }
+
+        ul,li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #loadCt{
+            position:relative;
+            margin:0 auto;
+        }
+
+        .picitem{
+            width: 200px;
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 10px;
+            position: absolute;
+        }
+
+        .pic-ct img{
+            width: 190px;
+            position:relative;
+            left:-6px;
+        }
+
+        .pic-ct h4{
+            border-bottom: 1px solid gray;
+            padding-bottom: 5px
+        }
+
+        .pic-ct p{
+            font-size: 12px;
+            color: #777371;
+        }
+
+        .pic-ct{
+            width: 700px;
+            position: relative;
+            margin: 50px auto;
+        }
+
+
+        .pic-ct .hide{
+            display: none;
+        }
+
+
+        #load span{
+            display:inline-block;
+
+            height:50px;
+            width:80px;
+            line-height:50px;
+            border-radius:4px;
+            //padding:5px;
+            background-color:orange;
+            cursor:pointer;
+        //text-align:center;
+        }
+
+        #load{
+            text-align:center;
+        }
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div>
+
+
+    <div class="navi-ct">
+
+        <div class="navi-bar">
+            <span>Start Bootstrap</span>
+            <ul class="navi-icon">
+                <li><a href="#service">Service</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <a name="top"></a>
+
+
+    <div class="homepage">
+        <div class="homepageCt">
+            <p><i>Welcome To Our Studio!</i></p>
+            <p>IT'S NICE TO MEET YOU</p>
+            <a href="#">Tell Me More</a>
+        </div>
+
+
+
+        <div id="ct">
+            <ul id="long-ct" class="clearfix">
+                <li>0<img src="http://www.civic.com.cn/images/1920_1.jpg"></li>
+                <li>1<img src="http://www.civic.com.cn/images/1920_3.jpg"></li>
+                <li>2<img src="http://www.civic.com.cn/images/1920_4.jpg"></li>
+
+
+            </ul>
+            <div id="preBtn"><</div>
+            <div id="nextBtn">></div>
+            <div id="long-button-ct">
+                <div class="long-button background-color"></div>
+                <div class="long-button"></div>
+                <div class="long-button"></div>
+
+
+            </div>
+        </div>
+
+        <div id="fixedBtn"><a href="#top">顶部</a></div>
+    </div>
+
+    <a name="service"></a>
+    <div class="services">
+        <h1>SERVICES</h1>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <div class="services-ct">
+            <div >
+                <div class="icon">&#xe608;</div>
+                <h3>E-Commerce</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+            <div>
+                <div class="icon">&#xe8f7;</div>
+                <h3>Responsive Design</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+            <div>
+                <div class="icon">&#xe66b;</div>
+                <h3>Web Security</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+        </div>
+
+        <div id="loadCt">
+            <ul class="pic-ct">
+                <!-- <li class="picitem">
+                   <a href="#" class="link"><img src="链接 " alt=""></a>
+                   <h4 class="header">标题</h4>
+                   <p class="news-text">文字内容</p>
+
+                 </li>-->
+                <li class="picitem hide"></li>
+
+
+            </ul>
+
+            <div id="load"><span>加载更多</span></div>
+
+
+
+        </div>
+
+
+
+    </div>
+    <a name="portfolio"></a>
+    <div class="portfolio">
+        <h1>PORTFOLIO</h1>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <div class="portfolio-ct">
+
+            <div class="card">
+                <div class="card-pic1">
+                    <li class="float-yellow">&#xe61f;<li>
+                </div>
+                <h3>Round Icons</h3>
+                <p>Graphic Design</p>
+
+            </div>
+            <div class="card">
+                <div class="card-pic2">
+                    <li class="float-yellow">&#xe61f;<li>
+                </div>
+                <h3>Startup Framework</h3>
+                <p>Website Design</p>
+
+            </div>
+            <div class="card">
+                <div class="card-pic3">
+                    <li class="float-yellow">&#xe61f;<li>
+                </div>
+                <h3>Treehouse</h3>
+                <p>Website Design</p>
+
+            </div>
+            <div class="card">
+                <div class="card-pic4">
+                    <li class="float-yellow">&#xe61f;<li>
+                </div>
+                <h3>Golden</h3>
+                <p>Web Design</p>
+
+            </div>
+            <div class="card">
+                <div class="card-pic5">
+                    <li class="float-yellow">&#xe61f;<li>
+                </div>
+                <h3>Escape</h3>
+                <p>Web Design</p>
+
+            </div>
+            <div class="card">
+                <div class="card-pic6">
+                    <li class="float-yellow">&#xe61f;<li>
+                </div>
+                <h3>Dreams</h3>
+                <p>Web Design</p>
+
+            </div>
+        </div>
+    </div>
+
+    <a name="about"></a>
+    <div class="about">
+        <h1>ABOUT</h1>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <div class="circle circle1"  >
+            <div class="word word1">
+                <h4>2009-2011</h4>
+                <h4>Our Humble Beginnings</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+            </div>
+            <div class="line"></div>
+        </div>
+
+        <div class="circle circle2" >
+            <div class="word word2">
+                <h4>2009-2011</h4>
+                <h4>Our Humble Beginnings</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+            </div>
+            <div class="line"></div>
+        </div>
+
+        <div class="circle circle3"  >
+            <div class="word word3">
+                <h4>2009-2011</h4>
+                <h4>Our Humble Beginnings</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+            </div>
+            <div class="line"></div>
+        </div>
+
+
+        <div class="circle circle4" >
+            <div class="word word4">
+                <h4>2009-2011</h4>
+                <h4>Our Humble Beginnings</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+            </div>
+            <div class="line"></div>
+        </div>
+
+        <div class="circle circle5" >
+            <div class=" word5">BE PART OF OUR STORY!</div>
+        </div>
+
+
+
+    </div>
+
+    <a name="team"></a>
+    <div class="team">
+        <h1>OUR AMAZING TEAM</h1>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <div class="team-ct">
+            <div class="member-card">
+                <div class="people people1"></div>
+                <h4>Kay Garland</h4>
+                <p>Lead Designer</p>
+                <div class="sn-share">
+                    <div>&#xe67c;</div>
+                    <div>&#xe6e2;</div>
+                    <div>&#xe7ae;</div>
+                </div>
+            </div>
+            <div class="member-card">
+                <div class="people people2"></div>
+                <h4>Larry Parker</h4>
+                <p>Lead Marketer</p>
+                <div class="sn-share">
+                    <div>&#xe67c;</div>
+                    <div>&#xe6e2;</div>
+                    <div>&#xe7ae;</div>
+                </div>
+            </div>
+            <div class="member-card">
+                <div class="people people3"></div>
+                <h4>Diana Pertersen</h4>
+                <p>Lead Developer</p>
+                <div class="sn-share">
+                    <div>&#xe67c;</div>
+                    <div>&#xe6e2;</div>
+                    <div>&#xe7ae;</div>
+                </div>
+            </div>
+
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+
+        <div class="logos">
+            <div class="logos-ct">
+                <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/envato.jpg"></img>
+                <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/designmodo.jpg"></img>
+                <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/themeforest.jpg"></img>
+                <img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/creative-market.jpg"></img>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <a name="contact"></a>
+    <div class="contact">
+        <h1>CONTACT US</h1>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <div class="contact-ct">
+            <form action="#" method="post">
+                <div class="contact-ct2">
+
+                    <div class="contact-form1">
+                        <input type="text" name="name" placeholder="Your name*"></input>
+                        <input type="text" name="email" placeholder="Your email*"></input>
+                        <input type="text" name="phone" placeholder="Your phone*"></input>
+                    </div>
+
+                    <textarea type="text" name="message" placeholder="Your message*"></textarea>
+
+                </div>
+
+                <div class="submit">Send Message</div>
+
+            </form>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="footer-ct">
+            <div>Copyright © Your Website 2014</div>
+            <div class="sn-share">
+                <div>&#xe67c;</div>
+                <div>&#xe6e2;</div>
+                <div>&#xe7ae;</div>
+            </div>
+            <div class="terms">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+<script>
+    var $imgs=$("#long-ct li")
+    var $width =$imgs.width()
+    var $longCt=$("#long-ct")
+    var $imgCount=$imgs.length
+
+    var $longButton=$(".long-button")
+
+    var indexNow=0
+    var isAnimate=false
+
+    $longCt.width(($imgCount+2)*$width)
+    $longCt.prepend($imgs.last().clone())
+    $longCt.append($imgs.first().clone())
+    $longCt.css({left:-$width})
+
+    function playNext(len){
+        if(isAnimate) return
+        isAnimate=true
+        $longCt.animate( {left:"-="+$width*len},function(){
+            indexNow+=len
+            console.log(indexNow)
+            if(indexNow===3){
+                indexNow=0
+                $longCt.css({left:-$width})
+            }
+            longButton()
+            isAnimate=false
+        })
+    }
+
+
+    function playPre(len){
+        if(isAnimate) return
+        isAnimate=true
+        $longCt.animate({left:"+="+$width*len},function(){
+            indexNow-=len
+            console.log(indexNow)
+            if(indexNow<0){
+                indexNow=2
+                $longCt.css({left:-$width*3})
+
+            }
+            longButton()
+            isAnimate=false
+        })
+    }
+
+    function autoPlay(){
+        clock=setInterval("playPre(1)",4000)
+    }
+
+    function stopPlay(){
+        clearInterval(clock)
+        setTimeout(autoPlay(),4000)
+    }
+
+
+
+
+    setTimeout(autoPlay(),5000)
+
+
+    $("#nextBtn").click(function(){
+        playNext(1)
+        stopPlay()
+
+    })
+
+
+
+    $("#preBtn").click(function(){
+        playPre(1)
+        stopPlay()
+
+    })
+
+
+
+    function longButton(){
+
+        $longButton.removeClass("background-color").eq(indexNow).addClass("background-color")
+
+    }
+
+
+    $longButton.click(function(){
+
+        var index=$(this).index()
+        if(index>indexNow){
+            playNext(index-indexNow)
+        }else if (index<indexNow){
+            playPre(indexNow-index)
+        }
+        stopPlay()
+
+    })
+
+
+
+
+
+
+
+</script>
+
+<script>
+    var curPage = 1
+    var perPageCount = 3
+    var colSumHeight = []
+    var nodeWidth = $('.picitem').outerWidth(true)
+    var colNum = parseInt($('.pic-ct').width()/$('.picitem').outerWidth(true))
+    for(var i=0;i<colNum;i++){
+        colSumHeight[i]=0
+    }
+    var isLoading = false
+
+    start()
+
+
+    function start(){
+
+        getData(function(newsList){
+            isLoading = true
+            $.each(newsList,function(idx,news){
+                var $node = getNode(news)
+                $node.find('img').load(function(){
+                    $('.pic-ct').append($node)
+                    waterFallPlace($node)
+                })
+            })
+        })
+        isLoading = false
+    }
+
+
+    $("#load").click(function(){
+        if(!isLoading) return
+        start()
+
+
+    })
+
+    function getData(callback){
+        $.ajax({
+            url: 'http://platform.sina.com.cn/slide/album_tech',
+            dataType: 'jsonp',
+            jsonp:"jsoncallback",
+            data: {
+                app_key: '1271687855',
+                num: perPageCount, // 一次要多少数据
+                page: curPage  // 第几页
+            }
+        }).done(function(ret){
+            if(ret && ret.status && ret.status.code === "0"){
+                callback(ret.data);   //如果数据没问题，那么生成节点并摆放好位置
+                curPage++
+            }else{
+                console.log('get error data');
+            }
+        });
+    }
+
+
+    function getNode (news){
+        var html = ''
+        html += '<li class = "picitem">';
+        html +=  '<a href="'+ news.url +'" class="link"><img src=" '+ news.img_url +' " alt=""></a>';
+        html += '<h4 class="header">'+news.short_name+'</h4>';
+        html += '<p class= "news-text">'+ news.short_intro+'</p>';
+        html += '</li>';
+        return $(html)
+    }
+
+
+    function waterFallPlace($node){
+
+        var minValue = Math.min.apply(null,colSumHeight)
+        var minIndex = colSumHeight.indexOf(minValue)
+
+        $node.css({
+            left: nodeWidth*minIndex,
+            top: minValue,
+            opacity: 1
+        })
+
+        colSumHeight[minIndex] = $node.outerHeight(true) + colSumHeight[minIndex];
+        $('.pic-ct').height(Math.max.apply(null,colSumHeight));
+    }
+
+
+
+
+</script>
+</body>
+</html>
